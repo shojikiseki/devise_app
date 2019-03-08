@@ -1,0 +1,10 @@
+<h1>ブログ一覧</h1>
+
+<p><%= link_to '新規投稿', new_blog_path %></p>
+
+<% @blogs.each do |blog| %>
+  <%= blog.title %></li>
+  <%= link_to '詳細', blog_path(blog) %></li>
+  <%= link_to '編集', edit_blog_path(blog) %></li>
+  <%= link_to '削除', blog_path(blog), method: :delete, data: { confirm: '本当に削除しますか？' } %></li>
+<% end %>
