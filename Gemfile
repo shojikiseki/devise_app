@@ -18,6 +18,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Outh
 gem 'devise'
 
+# Uploader
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

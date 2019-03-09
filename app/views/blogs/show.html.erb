@@ -3,6 +3,9 @@
 <p>投稿者 : <%= @blog.user.name %></p>
 <p>タイトル : <%= @blog.title %></p>
 <p>内容 : <%= @blog.content %></p>
+<% if @blog.image? %>
+  <p>画像 : <%= image_tag @blog.image.url %></p>
+<% end %>
 
 <br />
 
