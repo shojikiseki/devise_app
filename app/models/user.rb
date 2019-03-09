@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   has_many :blogs
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_blogs, through: :favorites, source: :blog
 end
