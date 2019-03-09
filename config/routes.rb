@@ -6,5 +6,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :blogs
+  resources :blogs do
+    member do
+      post :fav
+      delete :unfav
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[show edit update destroy]
+  before_action :set_blog, only: %i[show edit update destroy fav unfav]
 
   def index
     @blogs = Blog.all
@@ -20,6 +20,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def edit
@@ -36,6 +37,16 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     redirect_to blogs_path
+  end
+
+  def fav
+    current_user.favorites.create(blog_id: @blog.id)
+    redirect_to blog_path(@blog)
+  end
+
+  def unfav
+    current_user.favorites.find_by(blog_id: @blog.id).delete
+    redirect_to blog_path(@blog)
   end
 
   private
